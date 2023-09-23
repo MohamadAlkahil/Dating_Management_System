@@ -1,0 +1,7 @@
+SELECT m.name, l.name
+FROM Users m, users l, likedusers
+WHERE liker = m.userid AND likee = l.userid AND
+EXISTS (
+                SELECT liker
+                FROM likedusers
+                WHERE likee = m.userid AND liker = l.userid);

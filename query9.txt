@@ -1,0 +1,3 @@
+SELECT Name
+FROM Users
+WHERE gender = 'F' AND SexualOrn = 'Gay';

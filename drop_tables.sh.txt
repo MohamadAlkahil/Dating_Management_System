@@ -1,0 +1,23 @@
+#!/bin/sh
+echo "set linesize 200
+DROP TABLE LikedUsers;
+DROP TABLE SuperLike;
+DROP TABLE Block;
+DROP TABLE Makes;
+DROP TABLE Monitors;
+DROP TABLE GoesOn;
+DROP TABLE AdvertiseTo;
+DROP TABLE Rate;
+DROP TABLE UserLikes;
+DROP TABLE Dates;
+DROP TABLE Messages;
+DROP TABLE Matches;
+DROP TABLE Administration;
+DROP TABLE OutsideCompanies;
+DROP TABLE Locations;
+DROP TABLE RegularUser;
+DROP TABLE PaidUser;
+DROP TABLE Users;
+DROP TABLE Photos;
+
+exit"| sqlplus64 -s  "mtteshom/05169929@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))"

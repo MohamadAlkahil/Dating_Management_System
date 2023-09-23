@@ -1,0 +1,5 @@
+SELECT e. name AS Liker, COUNT(r.name) AS NUMBER_OF_LIKES
+FROM Users e, users r, LikedUsers
+WHERE e.userid = liker AND r.userid = likee
+GROUP BY e.name
+ORDER BY e.name;

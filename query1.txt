@@ -1,0 +1,7 @@
+SELECT u.name as Hostile_User
+FROM    Users u,Monitors
+WHERE   u.userid = monitors.userid
+AND EXISTS
+(SELECT  m.userid as Hostile_User
+FROM    Monitors m
+WHERE m.BlockNum>7 AND u.userid = m.userid);

@@ -1,0 +1,127 @@
+#!/bin/sh
+echo "set linesize 200
+CREATE TABLE Photos(
+        PhotoID VARCHAR2(25)    NOT NULL PRIMARY KEY,
+        Description     VARCHAR2(200),
+        Province        VARCHAR2(25),
+        City            VARCHAR2(25)
+);
+
+CREATE TABLE Users(
+        UserID          VARCHAR2(25)    NOT NULL PRIMARY KEY,
+        Password        VARCHAR2(30)    NOT NULL,
+        Name            VARCHAR2(20),
+        DateOfBirth     VARCHAR2(10),
+        SexualOrn       VARCHAR2(10),
+        Province        VARCHAR2(25),
+        City            VARCHAR2(40),
+        PhotoID VARCHAR2(25)    REFERENCES      Photos(PhotoID),
+        Gender            VARCHAR2(1)
+);
+
+CREATE TABLE PaidUser(
+        UserID          VARCHAR2(25)    REFERENCES Users(UserID),
+        CardNumber      NUMBER          NOT NULL,
+CrdName VARCHAR2(25)    NOT NULL,
+CVV             NUMBER                    NOT NULL
+);
+
+
+CREATE TABLE RegularUser(
+        UserID          VARCHAR2(25)    REFERENCES Users(UserID)
+);
+
+CREATE TABLE Locations(
+        LocationID      VARCHAR2(25)    NOT NULL PRIMARY KEY,
+        Province        VARCHAR2(25),
+        City            VARCHAR2(25),
+        StreetName      VARCHAR2(25),
+        StreetNumber    NUMBER,
+        PostalCode      VARCHAR2(6)
+);
+CREATE TABLE OutsideCompanies(
+        IdNumber        NUMBER          NOT NULL PRIMARY KEY,
+        CompanyName     VARCHAR2(20),
+        LocationID      VARCHAR2(25)    REFERENCES Locations(LocationID),
+    	Rating             NUMBER(3,2)
+);
+
+CREATE TABLE Administration(
+        AdminID VARCHAR2(25)    NOT NULL PRIMARY KEY,
+        Password        VARCHAR2(30)    NOT NULL
+);
+
+CREATE TABLE Matches(
+        MatchID         VARCHAR2(25)    NOT NULL PRIMARY KEY,
+        UserID                  VARCHAR2(25)    REFERENCES      Users(UserID),
+	AdminID         VARCHAR2(25)    REFERENCES Administration(AdminID)
+);
+
+CREATE TABLE Messages(
+        MessageID       VARCHAR2(25)    NOT NULL PRIMARY KEY,
+        Time            NUMBER,
+        Month           VARCHAR2(9),
+        Day             NUMBER,
+        Year            NUMBER,
+        MatchID VARCHAR2(25)    REFERENCES      Matches(MatchID)
+);
+CREATE TABLE Dates(
+        DateID          VARCHAR2(25)    NOT NULL PRIMARY KEY,
+        MessageID       VARCHAR2(25)    REFERENCES      Messages(MessageID),
+        StreetName      VARCHAR2(25),
+        StreetNumber    NUMBER,
+        Hour            NUMBER,
+        Minute          NUMBER,
+        Month           VARCHAR2(9),
+        Day             NUMBER,
+        Year            NUMBER,
+        DateNum        NUMBER
+);
+
+CREATE TABLE UserLikes(
+        Liker           VARCHAR2(25)    REFERENCES      Users(UserID),
+        Likee           VARCHAR2(25)    REFERENCES      Users(UserID),
+        MatchID VARCHAR2(25)    REFERENCES      Matches(MatchID)
+);
+
+CREATE TABLE Rate(
+	UserID          VARCHAR2(25)    REFERENCES      Users(UserID),
+	IdNumber        NUMBER          REFERENCES OutsideCompanies(IdNumber)
+);
+
+CREATE TABLE AdvertiseTo(
+        UserID          VARCHAR2(25)    REFERENCES      Users(UserID),
+IdNumber        NUMBER          REFERENCES OutsideCompanies(IdNumber)
+);
+
+CREATE TABLE GoesOn(
+        MatchID VARCHAR2(25)    REFERENCES      Matches(MatchID),
+        DateID          VARCHAR2(25)    REFERENCES      Dates(DateID)
+);
+
+CREATE TABLE Monitors(
+        UserID          VARCHAR2(25)    REFERENCES      Users(UserID),
+        AdminID         VARCHAR2(25)    REFERENCES      Administration(AdminID),
+        BlockNum       NUMBER
+);
+
+CREATE TABLE Makes(
+        UserID          VARCHAR2(25)    REFERENCES      Users(UserID),
+        MatchID VARCHAR2(25)    REFERENCES      Matches(MatchID)
+);
+
+CREATE TABLE Block(
+        Blocker         VARCHAR(25)     REFERENCES      Users(UserID),
+        Blockee         VARCHAR(25)     REFERENCES      Users(UserID)
+);
+
+CREATE TABLE SuperLike(
+        Liker           VARCHAR2(25)    REFERENCES      Users(UserID),
+        Likee           VARCHAR2(25)    REFERENCES      Users(UserID)
+);
+
+CREATE TABLE LikedUsers(
+        Liker           VARCHAR2(25)    REFERENCES      Users(UserID),
+        Likee           VARCHAR2(25)    REFERENCES      Users(UserID)
+);
+exit"| sqlplus64 -s  "mtteshom/05169929@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))"

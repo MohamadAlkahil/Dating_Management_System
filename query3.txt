@@ -1,0 +1,6 @@
+SELECT e.Name AS Active
+FROM Users e, LikedUsers
+WHERE e.UserID = Liker AND EXISTS(
+        SELECT r.Name AS Likee
+        FROM Users r, LikedUsers
+        WHERE r.UserID = Likee);

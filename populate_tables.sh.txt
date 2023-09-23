@@ -1,0 +1,104 @@
+#!/bin/sh
+echo "set linesize 200
+INSERT INTO Photos (photoid,description,province,city)
+VALUES('123098','Me at the beach!','Ontario','Toronto');
+
+INSERT INTO Photos (photoid,description,province,city)
+VALUES('3421345','Just chillin','Ontario','Ottawa');
+
+INSERT INTO Photos (photoid,description,province,city)
+VALUES('1789422','Nature Calls','Ontario','Toronto');
+
+INSERT INTO Photos (photoid,description,province,city)
+VALUES('1285435','Music is life','Ontario','Toronto');
+
+INSERT INTO Photos (photoid,description,province,city)
+VALUES('700021','Where''s Johnny?','Ontario','Toronto');
+
+INSERT INTO Photos (photoid,description,province,city)
+VALUES('390283','Slim Jim','Ontario','Ottawa');
+
+INSERT INTO Users (userid,password,name,dateofbirth,sexualOrn, province,city,photoid,gender)
+VALUES ('DaveyWavey','dw123','David Jackson','23/10/95','Straight','Ontario','Toronto','123098','M');
+
+INSERT INTO Users (userid,password,name,dateofbirth,sexualOrn, province,city,photoid,gender)
+VALUES ('L_scar17','expelliarmus','Harry Potter','31/07/80','Straight','Ontario','Ottawa','3421345','M');
+
+INSERT INTO Users (userid,password,name,dateofbirth,sexualOrn, province,city,photoid,gender)
+VALUES ('J_doeyo','hey9022','Jessica Doe','04/03/83','Gay','Ontario','Toronto','1789422','F');
+
+INSERT INTO Users (userid,password,name,dateofbirth,sexualOrn, province,city,photoid,gender)
+VALUES ('frankybby','ratpack200','Frank Sinatra','12/12/92','Bi','Ontario','Toronto','1285435','M');
+
+INSERT INTO Users (userid,password,name,dateofbirth,sexualOrn, province,city,photoid,gender)
+VALUES ('marrymac','jfkily','Marilyn Monroe','01/06/93','Bi','Ontario','Toronto','700021','F');
+
+INSERT INTO Users (userid,password,name,dateofbirth,sexualOrn, province,city,photoid,gender)
+VALUES ('jimmydee','hmuiyr','Jimmy Ricky','03/17/99','Gay','Ontario','Ottawa','390283','M');
+
+INSERT INTO Users (userid,password,name,dateofbirth,sexualOrn, province,city,photoid,gender)
+VALUES ('ChezzyYezzy','scoobdypoop','Kanye West','06/08/77','Bi','Ontario','Ottawa','','M');
+
+INSERT INTO Locations (locationid,province,city,streetname,streetnumber,postalcode)
+VALUES ('839298','Ontario','Toronto','Young','53','M192W6');
+
+INSERT INTO Locations (locationid,province,city,streetname,streetnumber,postalcode)
+VALUES ('128849','Ontario','Ottawa','Dumb','17','M342P7');
+
+INSERT INTO Locations (locationid,province,city,streetname,streetnumber,postalcode)
+VALUES ('024801','Ontario','Toronto','Broke','32','M058L4');
+
+INSERT INTO Locations (locationid,province,city,streetname,streetnumber,postalcode)
+VALUES ('165739','Ontario','Barrie','Blue','22','M183F3');
+
+INSERT INTO OutsideCompanies (idnumber,companyname,rating, locationid)
+VALUES ('543432892','Rudy''s Bar','4.3', '839298');
+
+INSERT INTO OutsideCompanies (idnumber,companyname,rating, locationid)
+VALUES ('138458901','McDonalds','3.2', '128849');
+
+INSERT INTO OutsideCompanies (idnumber,companyname,rating, locationid)
+VALUES ('1234385953','Cafe du Marc','3.6', '024801');
+
+INSERT INTO OutsideCompanies (idnumber,companyname,rating, locationid)
+VALUES ('905493891','Quencher','4.8','165739');
+
+INSERT INTO Messages (messageid,month,day,year)
+VALUES ('5345821','October','20','2020');
+
+INSERT INTO Messages (messageid,month,day,year)
+VALUES ('9091212','March','13','2020');
+
+INSERT INTO Messages (messageid,month,day,year)
+VALUES ('1209437','October','20','2020');
+
+INSERT INTO Administration (adminid,password)
+VALUES ('admin123','admin456');
+
+INSERT INTO Monitors (userid,adminid,blocknum)
+VALUES ('frankybby','admin123','2');
+
+INSERT INTO Monitors (userid,adminid,blocknum)
+VALUES ('J_doeyo','admin123','10');
+
+INSERT INTO LikedUsers (Liker, Likee)
+VALUES ('frankybby', 'marrymac');
+
+INSERT INTO LikedUsers (Liker, Likee)
+VALUES ('ChezzyYezzy', 'jimmydee');
+
+INSERT INTO LikedUsers (Liker, Likee)
+VALUES ('DaveyWavey', 'marrymac');
+
+INSERT INTO LikedUsers (Liker, Likee)
+VALUES ('J_doeyo', 'marrymac');
+
+INSERT INTO LikedUsers (Liker, Likee)
+VALUES ('jimmydee', 'frankybby');
+
+INSERT INTO LikedUsers (Liker, Likee)
+VALUES ('frankybby', 'ChezzyYezzy');
+
+INSERT INTO LikedUsers (Liker, Likee)
+VALUES ('marrymac', 'frankybby');
+exit"| sqlplus64 -s  "mtteshom/05169929@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))"

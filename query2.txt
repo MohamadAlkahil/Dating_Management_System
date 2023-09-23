@@ -1,0 +1,6 @@
+SELECT name, COUNT(companyname) AS NUM_OF_Dating_Spots
+FROM Users, OutsideCompanies, Locations
+WHERE rating > 3.5 AND users.city = locations.city AND locations.locationid = outsidecompanies.locationid
+GROUP BY name
+ORDER BY name;
+

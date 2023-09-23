@@ -1,0 +1,3 @@
+SELECT UserID
+FROM Monitors
+WHERE BlockNum>5;

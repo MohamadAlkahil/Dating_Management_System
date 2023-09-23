@@ -1,0 +1,73 @@
+#!/bin/sh
+
+export LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+
+    echo $'\n'
+    echo 'Press 1 to run query 1'
+    echo 'Press 2 to run query 2'
+    echo 'Press 3 to run query 3'
+    echo 'Press 4 to run query 4'
+    echo 'Press 5 to run query 5'
+    echo 'Press 6 to run query 6'
+    echo 'Press 7 to run query 7'
+    echo 'Press 8 to run query 8'
+    echo 'Press 9 to run query 9'
+    echo 'Press 10 to run query 10'
+    echo 'Press e to exit'
+
+read input
+
+while [ "$input" != "e" ] && [ "$input" != "E" ];
+do
+    if [ "$input" = "1" ]; then
+        echo 'Query 1:List the name of the users whose BlockNum>5 '
+        sqlplus64 "malkahil/06227490@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))" < ./query1
+    elif [ "$input" = "2" ]; then
+        echo 'Query 2:List the companies that are in the same city as the users and have a rating greater than 3.5 '
+        sqlplus64 "malkahil/06227490@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))" < ./query2
+    elif [ "$input" = "3" ]; then
+        echo 'Query 3:List all the active users( A.K.A which users are actively liking others) '
+        sqlplus64 "malkahil/06227490@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))" < ./query3
+    elif [ "$input" = "4" ]; then
+        echo 'Query 4:List the number of likes for each ‘liker’ '
+        sqlplus64 "malkahil/06227490@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))" < ./query4
+    elif [ "$input" = "5" ]; then
+        echo 'Query 5:List all the Likes for each user '
+        sqlplus64 "malkahil/06227490@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))" < ./query5
+    elif [ "$input" = "6" ]; then
+        echo 'Query 6:List all the matches '
+        sqlplus64 "malkahil/06227490@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))" < ./query6
+    elif [ "$input" = "7" ]; then
+        echo 'Query 7:List userID’s for the users that have been blocked more than 5 times '
+        sqlplus64 "malkahil/06227490@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))" < ./query7
+    elif [ "$input" = "8" ]; then
+        echo 'Query 8:List all male users who are straight '
+        sqlplus64 "malkahil/06227490@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))" < ./query8
+    elif [ "$input" = "9" ]; then
+        echo 'Query 9:List all female users who are gay '
+        sqlplus64 "malkahil/06227490@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))" < ./query9
+    elif [ "$input" = "10" ]; then
+        echo 'Query 10:List all the  names of  users from Toronto '
+        sqlplus64 "malkahil/06227490@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))" < ./query10
+    else
+    echo 'invalid input'
+    fi
+
+    echo $'\n'
+    echo 'Press 1 to run query 1'
+    echo 'Press 2 to run query 2'
+    echo 'Press 3 to run query 3'
+    echo 'Press 4 to run query 4'
+    echo 'Press 5 to run query 5'
+    echo 'Press 6 to run query 6'
+    echo 'Press 7 to run query 7'
+    echo 'Press 8 to run query 8'
+    echo 'Press 9 to run query 9'
+    echo 'Press 10 to run query 10'
+    echo 'Press e to exit'
+
+    read input
+done
+
+
+

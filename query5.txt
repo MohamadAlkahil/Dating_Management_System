@@ -1,0 +1,4 @@
+SELECT e.Name AS Liker, r.Name AS Likee
+FROM Users e,Users r,LikedUsers
+WHERE e.UserID=Liker AND r.UserID=Likee
+ORDER BY e.UserID;
